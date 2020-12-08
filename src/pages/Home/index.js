@@ -3,6 +3,7 @@ import ColumnWrapper from "../../components/ColumnWrapper";
 import TextField from "../../components/TextField";
 import Card from "../../components/Card";
 import Button from "../../components/Button";
+import Loading from "../../components/Loading";
 import api from "../../api";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -12,6 +13,8 @@ import { bindActionCreators } from "redux";
 const Home = ({ personColorAction: { setPersonColor } }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const history = useHistory();
 
   const onChangeName = (event) => {
@@ -22,7 +25,13 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     setAge(event.target.value);
   };
 
+  const closeLoading = () => {
+    setIsLoading(false);
+  };
+
   const handleSubmit = async (event) => {
+    setIsLoading(true);
+
     event.preventDefault();
     const body = {
       name: name,
@@ -33,32 +42,42 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
       alert(errorBody.message);
     });
     setPersonColor(data.data);
-    if (data) history.push(`/color`);
+    if (data) {
+      closeLoading();
+      history.push(`/color`);
+    }
   };
 
   return (
-    <Card>
-      <form onSubmit={handleSubmit}>
-        <ColumnWrapper>
-          <h1>Age Color Generator</h1>
-          <TextField
-            name="name"
-            type="text"
-            value={name}
-            placeholder="Type your name here"
-            onChange={onChangeName}
-          />
-          <TextField
-            name="age"
-            type="number"
-            value={age}
-            placeholder="Type your age here"
-            onChange={onChangeAge}
-          />
-          <Button>Generate</Button>
-        </ColumnWrapper>
-      </form>
-    </Card>
+    <div>
+      <Card>
+        <form onSubmit={handleSubmit}>
+          <ColumnWrapper>
+            <h1>Age Color Generator</h1>
+            <TextField
+              name="name"
+              type="text"
+              value={name}
+              placeholder="Type your name here"
+              onChange={onChangeName}
+            />
+            <TextField
+              name="age"
+              type="number"
+              value={age}
+              placeholder="Type your age here"
+              onChange={onChangeAge}
+            />
+            <Button>Generate</Button>
+          </ColumnWrapper>
+        </form>
+      </Card>
+      <Loading
+        isOpen={isLoading}
+        message="Generating your age color..."
+        onClose={() => closeLoading()}
+      />
+    </div>
   );
 };
 
