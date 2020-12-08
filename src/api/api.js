@@ -10,7 +10,8 @@ const instance = axios.create({
   },
   redirect: "follow",
   referrer: "no-referrer",
-  baseURL: "https://xaltius-be-test.herokuapp.com",
+  // baseURL: "https://xaltius-be-test.herokuapp.com",
+  baseURL: "http://192.168.8.142:8091",
 });
 
 export default class ApiUtils {

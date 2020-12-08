@@ -49,7 +49,7 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     );
   };
   const isNameValid = (value) => {
-    return !hasNumber(value) && !hasSpecialCharacter(value);
+    return !hasNumber(value) && !hasSymbol(value);
   };
   const isEmpty = (value) => {
     return value.toString().length === 0;
@@ -58,7 +58,7 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     return /\d/.test(value);
   };
 
-  const hasSpecialCharacter = (value) => {
+  const hasSymbol = (value) => {
     return /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(value);
   };
 
