@@ -33,4 +33,4 @@ const StyledSpinner = styled.svg`
   }
 `;
 
-export { StyledSpinner };
+export default StyledSpinner;

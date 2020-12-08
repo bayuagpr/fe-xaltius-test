@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "../Modal";
-import { StyledSpinner } from "./styles";
+import StyledSpinner from "./styles";
 
 const Loading = (props) => {
   return (

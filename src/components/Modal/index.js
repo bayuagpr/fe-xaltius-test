@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import { ModalContent, ModalBackground } from "./styles";
 
 const Modal = (props) => {
   const close = (e) => {
@@ -14,8 +14,8 @@ const Modal = (props) => {
 
   return (
     <div>
-      <div className="modal">{props.children}</div>
-      <div className="bg" onClick={(e) => close(e)} />
+      <ModalContent>{props.children}</ModalContent>
+      <ModalBackground onClick={(e) => close(e)} />
     </div>
   );
 };
