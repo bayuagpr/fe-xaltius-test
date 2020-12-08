@@ -25,6 +25,10 @@ body,
   margin-bottom: 10px;
 }
 
+.white-text {
+  color: #ffffff;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

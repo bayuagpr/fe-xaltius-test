@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { Router, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import CenteredWrapper from "../../components/CenteredWrapper";
 import history from "../../config/history";
 import Home from "../Home";
 import Color from "../Color";
+import NotFound from "../NotFound";
 
 class App extends Component {
   render() {
@@ -17,6 +18,10 @@ class App extends Component {
             <Route path="/color">
               <Color />
             </Route>
+            <Route path="/page-not-found">
+              <NotFound />
+            </Route>
+            <Redirect to="/page-not-found" />
           </Switch>
         </Router>
       </CenteredWrapper>
