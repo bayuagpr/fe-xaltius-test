@@ -4,6 +4,7 @@ import Button from "../../components/Button";
 import TextField from "../../components/TextField";
 import Card from "../../components/Card";
 import Loading from "../../components/Loading";
+import ModalError from "../../components/ModalError";
 import api from "../../api";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -17,6 +18,8 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
   const [isTouched, setIsTouched] = useState(false);
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
@@ -63,6 +66,11 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     setIsLoading(false);
   };
 
+  const closeError = () => {
+    setIsError(false);
+    setErrorMessage("");
+  };
+
   const processAgeColor = async () => {
     const isFormValid = await isValid();
     if (isFormValid) {
@@ -72,18 +80,18 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
         age: age,
       };
       const data = await api.postProcessAge(body).catch((error) => {
-        const errorBody = JSON.parse(error.err);
+        const errorBody = { ...error };
         const errorMessage =
           errorBody.message == null
             ? "Internal Server Error"
             : errorBody.message;
         closeLoading();
-
-        alert(errorMessage);
+        setIsError(true);
+        setErrorMessage(errorMessage);
       });
-      setPersonColor(data.data);
       if (data) {
         closeLoading();
+        setPersonColor(data.data);
         history.push(`/color`);
       }
     }
@@ -142,6 +150,11 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
         isOpen={isLoading}
         message="Generating your age color..."
         onClose={() => closeLoading()}
+      />
+      <ModalError
+        isOpen={isError}
+        message={errorMessage}
+        onClose={() => closeError()}
       />
     </div>
   );
