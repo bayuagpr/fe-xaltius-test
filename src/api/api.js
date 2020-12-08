@@ -10,8 +10,9 @@ const instance = axios.create({
   },
   redirect: "follow",
   referrer: "no-referrer",
-  // baseURL: "https://xaltius-be-test.herokuapp.com",
-  baseURL: "http://192.168.8.142:8091",
+  baseURL: "https://xaltius-be-test.herokuapp.com",
+  // baseURL: "http://192.168.8.142:8091",
+  timeout: 10 * 1000,
 });
 
 export default class ApiUtils {
@@ -20,14 +21,13 @@ export default class ApiUtils {
       instance
         .get(url, { ...body })
         .then(({ data }) => {
-          if (data.errno === 0) {
-            resolve(data.data);
-          } else {
-            resolve(data);
-          }
+          resolve(data);
         })
         .catch((err) => {
-          reject({ err: JSON.stringify(err) });
+          const error = err.message.toLowerCase().includes("status")
+            ? err.response.data
+            : { message: err.message };
+          reject(error);
         });
     });
   }
@@ -39,7 +39,10 @@ export default class ApiUtils {
           resolve(data);
         })
         .catch((err) => {
-          reject(err.response.data);
+          const error = err.message.toLowerCase().includes("status")
+            ? err.response.data
+            : { message: err.message };
+          reject(error);
         });
     });
   }

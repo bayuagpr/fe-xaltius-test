@@ -146,11 +146,7 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
           </ColumnWrapper>
         </form>
       </Card>
-      <Loading
-        isOpen={isLoading}
-        message="Generating your age color..."
-        onClose={() => closeLoading()}
-      />
+      <Loading isOpen={isLoading} message="Generating your age color..." />
       <ModalError
         isOpen={isError}
         message={errorMessage}

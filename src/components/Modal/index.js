@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import "./index.css";
 
-export default class Modal extends Component {
-  render() {
-    if (this.props.isOpen === false) return null;
-
-    return (
-      <div>
-        <div className="modal">{this.props.children}</div>
-        <div className="bg" onClick={(e) => this.close(e)} />
-      </div>
-    );
-  }
-
-  close(e) {
+const Modal = (props) => {
+  const close = (e) => {
     e.preventDefault();
 
-    if (this.props.onClose) {
-      this.props.onClose();
+    if (props.onClose) {
+      props.onClose();
     }
-  }
-}
+  };
+
+  if (props.isOpen === false) return null;
+
+  return (
+    <div>
+      <div className="modal">{props.children}</div>
+      <div className="bg" onClick={(e) => close(e)} />
+    </div>
+  );
+};
+
+export default Modal;

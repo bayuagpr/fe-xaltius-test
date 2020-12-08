@@ -4,7 +4,7 @@ import { StyledSpinner } from "./styles";
 
 const Loading = (props) => {
   return (
-    <Modal isOpen={props.isOpen} onClose={(e) => this.close(e)}>
+    <Modal isOpen={props.isOpen}>
       <h2>{props.message}</h2>
       <StyledSpinner viewBox="0 0 50 50">
         <circle
