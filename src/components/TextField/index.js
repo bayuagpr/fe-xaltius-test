@@ -11,6 +11,7 @@ const TextField = styled(
     value,
     placeholder,
     errorMessage,
+    isTouched,
     hintText,
     type,
     onChange,
@@ -18,7 +19,7 @@ const TextField = styled(
     className,
   }) => {
     const error = errorMessage == null ? "" : errorMessage;
-    const isError = error.length > 0;
+    const isError = isTouched && error.length > 0;
     return (
       <div className={className}>
         <StyledInput

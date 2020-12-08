@@ -10,7 +10,6 @@ const Error = styled(Text)`
 `;
 
 const StyledInput = styled.input`
-  margin-bottom: 10px;
   font-size: 14px;
   padding: 10px 12px;
   border-width: 1px;
