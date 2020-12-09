@@ -5,6 +5,7 @@ import TextField from "../../components/TextField";
 import Card from "../../components/Card";
 import Loading from "../../components/Loading";
 import ModalError from "../../components/ModalError";
+import Spacer from "../../components/Spacer";
 import api from "../../api";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -13,19 +14,25 @@ import { bindActionCreators } from "redux";
 
 const Home = ({ personColorAction: { setPersonColor } }) => {
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isTouched, setIsTouched] = useState(false);
+  const [isNameTouched, setIsNameTouched] = useState(false);
+  const [isBirthDateTouched, setIsBirthDateTouched] = useState(false);
   const [nameError, setNameError] = useState("");
-  const [ageError, setAgeError] = useState("");
+  const [birthDateError, setBirthDateError] = useState("");
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
   const onChangeName = (event) => {
-    setIsTouched(true);
-    if (isNameValid(event.target.value)) setName(event.target.value);
+    if (isNameValid(event.target.value)) {
+      if (/\s/.test(event.target.value.charAt(event.target.value.length - 1))) {
+        setName(toTitleCase(event.target.value));
+      } else {
+        setName(event.target.value);
+      }
+    }
     if (isEmpty(event.target.value)) {
       setNameError("Name is required");
     } else {
@@ -33,19 +40,60 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     }
   };
 
-  const onChangeAge = (event) => {
-    setIsTouched(true);
-    setAge(event.target.value);
-    if (isEmpty(event.target.value)) {
-      setAgeError("Age is required");
+  const onChangeBirthDate = (value) => {
+    setBirthDate(value);
+    if (isEmpty(value)) {
+      setBirthDateError("Birth Date is required");
     } else {
-      setAgeError("");
+      setBirthDateError("");
+    }
+  };
+  const toTitleCase = (phrase) => {
+    return phrase
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+  const onBlurName = () => {
+    if (isEmpty(name)) {
+      setNameError("Name is required");
+    } else {
+      setNameError("");
+      setName(toTitleCase(name));
     }
   };
 
-  const isValid = async () => {
+  const onBlurBirthDate = () => {
+    if (isEmpty(birthDate)) {
+      setBirthDateError("Birth Date is required");
+    } else {
+      setBirthDateError("");
+    }
+  };
+
+  const onClickName = () => {
+    setIsNameTouched(true);
+  };
+
+  const onClickBirthDate = () => {
+    setIsBirthDateTouched(true);
+  };
+
+  const onFocusName = () => {
+    setIsNameTouched(true);
+  };
+
+  const onFocusBirthDate = () => {
+    setIsBirthDateTouched(true);
+  };
+
+  const isValid = () => {
     return (
-      isEmpty(nameError) && isEmpty(ageError) && !isEmpty(name) && !isEmpty(age)
+      isEmpty(nameError) &&
+      isEmpty(birthDateError) &&
+      !isEmpty(name) &&
+      !isEmpty(birthDate)
     );
   };
   const isNameValid = (value) => {
@@ -71,10 +119,18 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     setErrorMessage("");
   };
 
+  const calculateAge = (dateOfBirth) => {
+    const diffTime = Date.now() - dateOfBirth.getTime();
+    const ageDiffTime = new Date(diffTime);
+
+    return Math.abs(ageDiffTime.getUTCFullYear() - 1970);
+  };
+
   const processAgeColor = async () => {
     const isFormValid = await isValid();
     if (isFormValid) {
       setIsLoading(true);
+      const age = calculateAge(new Date(birthDate));
       const body = {
         name: name,
         age: age,
@@ -97,19 +153,20 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     }
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setIsTouched(true);
+    setIsNameTouched(true);
+    setIsBirthDateTouched(true);
 
     if (isEmpty(name)) {
       setNameError("Name is required");
     } else {
       setNameError("");
     }
-    if (isEmpty(age)) {
-      setAgeError("Age is required");
+    if (isEmpty(birthDate)) {
+      setBirthDateError("Birth Date is required");
     } else {
-      setAgeError("");
+      setBirthDateError("");
     }
     setTimeout(() => {
       processAgeColor();
@@ -121,7 +178,8 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
       <Card>
         <form onSubmit={handleSubmit}>
           <ColumnWrapper>
-            <h1>Age Color Generator</h1>
+            <h2>Age Color Generator</h2>
+            <Spacer />
             <TextField
               className="text-field"
               name="name"
@@ -129,18 +187,26 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
               value={name}
               placeholder="Type your name here"
               onChange={onChangeName}
-              isTouched={isTouched}
+              isTouched={isNameTouched}
               errorMessage={nameError}
+              onClick={onClickName}
+              onFocus={onFocusName}
+              onBlur={onBlurName}
             />
             <TextField
               className="text-field"
-              name="age"
-              type="number"
-              value={age}
-              placeholder="Type your age here"
-              onChange={onChangeAge}
-              isTouched={isTouched}
-              errorMessage={ageError}
+              name="birthDate"
+              type="date"
+              value={birthDate}
+              placeholder="Choose your birth date"
+              onChange={onChangeBirthDate}
+              isTouched={isBirthDateTouched}
+              errorMessage={birthDateError}
+              onClick={onClickBirthDate}
+              onFocus={onFocusBirthDate}
+              onBlur={onBlurBirthDate}
+              disableFuture
+              autoOk
             />
             <Button>Generate</Button>
           </ColumnWrapper>

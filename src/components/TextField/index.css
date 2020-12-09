@@ -1,0 +1,23 @@
+.date {
+  position: relative;
+  color: #aaa;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.date input {
+  cursor: pointer;
+}
+
+.date .fa-date {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  font-size: 20px !important;
+  left: auto;
+  right: 14px;
+}
+
+.date-picker {
+  visibility: hidden;
+}

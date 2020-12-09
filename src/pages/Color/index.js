@@ -20,7 +20,7 @@ export const Color = ({ personColor }) => {
     };
   });
 
-  const goToHome = async (event) => {
+  const goToHome = (event) => {
     event.preventDefault();
     history.push(`/`);
   };
@@ -28,8 +28,9 @@ export const Color = ({ personColor }) => {
   return (
     <Card>
       <ColumnWrapper>
-        <h1>Hi {personColor.name}!</h1>
-        <h1>You are {personColor.age} years old</h1>
+        <h2>Hi {personColor.name}!</h2>
+        <h2>Welcome to your age color page!</h2>
+        <h2>Right now you are {personColor.age} years old</h2>
         <RowWrapper>
           <h2>Your age color is</h2>
           <ColorBox inputColor={personColor.colors} />

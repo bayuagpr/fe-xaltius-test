@@ -14,8 +14,10 @@ const StyledInput = styled.input`
   padding: 10px 12px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 3px;
+  border-radius: 8px;
   border-color: ${(props) => (props.error ? "red" : "black")};
+  min-width: 200px;
+  min-height: 30px;
 `;
 
 export { Text, Error, StyledInput };

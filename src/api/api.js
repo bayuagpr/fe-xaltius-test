@@ -12,7 +12,7 @@ const instance = axios.create({
   referrer: "no-referrer",
   baseURL: "https://xaltius-be-test.herokuapp.com",
   // baseURL: "http://192.168.8.142:8091",
-  timeout: 10 * 1000,
+  timeout: 30 * 1000,
 });
 
 export default class ApiUtils {
