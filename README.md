@@ -19,10 +19,10 @@ This web apps is responsive to desktop and mobile
 
 ### Mobile Resolution
 
-![expectedmobile](./screenshot/Mobile/ExpectedMobile1.png)
-![expectedmobile](./screenshot/Mobile/ExpectedMobile2.png)
-![expectedmobile](./screenshot/Mobile/ExpectedMobile3.png)
-![expectedmobile](./screenshot/Mobile/ExpectedMobile4.png)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile1.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile2.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile3.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile4.jpg)
 
 ## Table of contents
 
