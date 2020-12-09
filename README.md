@@ -1,70 +1,87 @@
-# Getting Started with Create React App
+# Xaltius Developer Technical Test: (Front-end)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Age Color Generator Apps
 
-## Available Scripts
+This repository contains the source code for [Age Color Generator](https://xaltius-fe-test.netlify.app/) front-end web apps. This web apps create with React.
 
-In the project directory, you can run:
+[DEMO](https://xaltius-fe-test.netlify.app/)
 
-### `npm start`
+## Screenshot
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This web apps is responsive to desktop and mobile
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Desktop Resolution
 
-### `npm test`
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop1.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop2.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop3.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop4.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Mobile Resolution
 
-### `npm run build`
+![expectedmobile](./screenshot/Mobile/ExpectedMobile1.png)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile2.png)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile3.png)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile4.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Table of contents
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- vim-markdown-toc GFM -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Technologies](#technologies)
+- [Packages Structure](#packages-structure)
+- [Getting Started](#getting-started)
+  - [Setting Up](#setting-up)
+  - [How To Build](#how-to-build)
+  - [How To Run](#how-to-run)
+    - [1. Run Jar Natively](#1-run-jar-natively)
+    - [2. Use docker](#2-use-docker)
+- [Deployment](#deployment)
+  - [Setting up the project on Heroku](#setting-up-the-project-on-heroku)
+  - [Deploying to Heroku](#deploying-to-heroku)
 
-### `npm run eject`
+<!-- vim-markdown-toc -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technologies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- React Router
+- Styled Components
+- Redux
+- Reselect
+- Axios
+- Material UI date picker
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Packages Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- api (API list and utilization)
+- components (Base Component)
+- config (Configuration)
+- pages (Pages component and App Component)
+- redux (Redux action, reducer and reselect)
 
-## Learn More
+## Getting started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Setting up
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+NPM required
 
-### Code Splitting
+- Clone this repository: `git clone hhttps://github.com/bayuagpr/fe-xaltius-test.git`
+- Move into the project directory: `cd fe-xaltius-test`
+- Install the dependencies: `npm install`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### How to run
 
-### Analyzing the Bundle Size
+- Run the development task: `npm start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### How to build
 
-### Making a Progressive Web App
+- Run build for production: `npm run build`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The app for production will be ready in `build` folder.
 
-### Advanced Configuration
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Push code to Github: `git push origin master`
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app will be auto deploy to [https://xaltius-fe-test.netlify.app/](https://xaltius-fe-test.netlify.app/)
