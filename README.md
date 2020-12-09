@@ -32,13 +32,9 @@ This web apps is responsive to desktop and mobile
 - [Packages Structure](#packages-structure)
 - [Getting Started](#getting-started)
   - [Setting Up](#setting-up)
-  - [How To Build](#how-to-build)
   - [How To Run](#how-to-run)
-    - [1. Run Jar Natively](#1-run-jar-natively)
-    - [2. Use docker](#2-use-docker)
+  - [How To Build](#how-to-build)
 - [Deployment](#deployment)
-  - [Setting up the project on Heroku](#setting-up-the-project-on-heroku)
-  - [Deploying to Heroku](#deploying-to-heroku)
 
 <!-- vim-markdown-toc -->
 
