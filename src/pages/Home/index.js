@@ -41,11 +41,17 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
   };
 
   const onChangeBirthDate = (value) => {
+    setIsBirthDateTouched(true);
+
     setBirthDate(value);
     if (isEmpty(value)) {
       setBirthDateError("Birth Date is required");
     } else {
-      setBirthDateError("");
+      if (calculateAge(new Date(value)) === 0) {
+        setBirthDateError("Minimum age is 1 years old");
+      } else {
+        setBirthDateError("");
+      }
     }
   };
   const toTitleCase = (phrase) => {
@@ -68,7 +74,11 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     if (isEmpty(birthDate)) {
       setBirthDateError("Birth Date is required");
     } else {
-      setBirthDateError("");
+      if (calculateAge(new Date(birthDate)) === 0) {
+        setBirthDateError("Minimum age is 1 years old");
+      } else {
+        setBirthDateError("");
+      }
     }
   };
 
@@ -166,8 +176,13 @@ const Home = ({ personColorAction: { setPersonColor } }) => {
     if (isEmpty(birthDate)) {
       setBirthDateError("Birth Date is required");
     } else {
-      setBirthDateError("");
+      if (calculateAge(new Date(birthDate)) === 0) {
+        setBirthDateError("Minimum age is 1 years old");
+      } else {
+        setBirthDateError("");
+      }
     }
+
     setTimeout(() => {
       processAgeColor();
     }, 500);
