@@ -12,35 +12,27 @@ This web apps is responsive to desktop and mobile
 
 ### Home page
 
-- Desktop Resolution
-  ![expecteddesktop](./screenshot/Desktop/ExpectedDesktop1.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop1.png)
 
-- Mobile Resolution
-  ![expectedmobile](./screenshot/Mobile/ExpectedMobile1.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile1.jpg)
 
 ### Select Birth Date
 
-- Desktop Resolution
-  ![expecteddesktop](./screenshot/Desktop/ExpectedDesktop2.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop2.png)
 
-- Mobile Resolution
-  ![expectedmobile](./screenshot/Mobile/ExpectedMobile2.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile2.jpg)
 
 ### Form Filled
 
-- Desktop Resolution
-  ![expecteddesktop](./screenshot/Desktop/ExpectedDesktop3.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop3.png)
 
-- Mobile Resolution
-  ![expectedmobile](./screenshot/Mobile/ExpectedMobile3.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile3.jpg)
 
 ### Color Page
 
-- Desktop Resolution
-  ![expecteddesktop](./screenshot/Desktop/ExpectedDesktop4.png)
+![expecteddesktop](./screenshot/Desktop/ExpectedDesktop4.png)
 
-- Mobile Resolution
-  ![expectedmobile](./screenshot/Mobile/ExpectedMobile4.jpg)
+![expectedmobile](./screenshot/Mobile/ExpectedMobile4.jpg)
 
 ## Table of contents
 
